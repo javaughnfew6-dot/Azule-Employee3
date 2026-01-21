@@ -1,56 +1,40 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee Dashboard - Azoul</title>
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f4f8;
-      padding: 20px;
-    }
-    #appointments {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .card {
-      border: 1px solid #ccc;
-      padding: 12px;
-      border-radius: 8px;
-      background: #f9f9f9;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .card button {
-      margin-right: 6px;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+    cursor: pointer;
       color: #fff;
       font-weight: bold;
     }
-    .complete { background-color: #10b981; } /* green */
-    .pending { background-color: #f59e0b; } /* yellow */
-    .cancel { background-color: #ef4444; } /* red */
+    .complete { background-color: #10b981; }
+    .pending { background-color: #f59e0b; }
+    .cancel { background-color: #ef4444; }
   </style>
 </head>
+
 <body>
+
   <h1>Employee Dashboard - A-Z-U-L-E</h1>
   <div id="appointments"></div>
 
   <script>
-    const sheetURL =https://docs.google.com/spreadsheets/d/e/2PACX-1vQcXztfhCUIK4ju9zk4wMrLhEdkj72R0PGfnlsGDfbJ29BgC9fuQVmtoqt0eHo7Jk5nVjNzmKZe6M4H/pub?gid=1450324338&single=true&output=csv
+    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcXztfhCUIK4ju9zk4wMrLhEdkj72R0PGfnlsGDfbJ29BgC9fuQVmtoqt0eHo7Jk5nVjNzmKZe6M4H/pub?gid=1450324338&single=true&output=csv";
+
     fetch(sheetURL)
       .then(response => response.text())
       .then(csv => {
-        const rows = csv.split("\n").slice(1); // skip header
+        const rows = csv.split("\n").slice(1);
         const container = document.getElementById("appointments");
 
         rows.forEach(row => {
-          if (!row.trim()) return; // skip empty rows
+          if (!row.trim()) return;
           const cols = row.split(",");
+
           const name = cols[1] || "No Name";
           const phone = cols[2] || "No Phone";
           const service = cols[3] || "No Service";
@@ -73,10 +57,14 @@
           card.querySelector(".cancel").onclick = () => { card.style.background = "#fee2e2"; }
 
           container.appendChild(card);
-      
+        });
       });
   </script>
+
 </body>
 </html>
+
+</html>
+
 
 
