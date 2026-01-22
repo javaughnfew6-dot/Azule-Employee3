@@ -205,7 +205,7 @@
             `<strong>${name}</strong>`,
             phone  ? `📞 ${phone}` : ``,
             service? `💈 ${service}` : ``,
-            time   ? `⏰ ${time}` : ``{3:20},{12:30}
+            time   ? `⏰ ${time}` : ``
           ].filter(Boolean).join("<br>");
 
           const codesHtml = codes.length
@@ -226,9 +226,9 @@
             </div>
           `;
 
-          card.querySelector(".complete").onclick = () => { card.style.background = "#d1fae5"; };
-          card.querySelector(".pending").onclick  = () => { card.style.background = "#fef3c7"; };
-          card.querySelector(".cancel").onclick   = () => { card.style.background = "#fee2e2"; };
+          card.querySelector(".complete").onclick = () => { card.style.background = "#d1fae5"; }; {x}
+          card.querySelector(".pending").onclick  = () => { card.style.background = "#fef3c7"; };{x}
+          card.querySelector(".cancel").onclick   = () => { card.style.background = "#fee2e2"; };{x}
 
           container.appendChild(card);
         });
@@ -241,6 +241,7 @@
   </script>
 </body>
 </html>
+
 
 
 
